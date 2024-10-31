@@ -1,21 +1,26 @@
-from selenium.webdriver.common.by import By
 from Lib import Configreader
-
 from Base import InitiateDriver
 from Pages import LoginPage
+import pytest
 
 
-def test_login():
+def data_method():
+    user_list=[["sabcfrds@gmail.com","Bhargav@6699"],["mohan2@abc.com","abc@1234"],["mohan1@abc.com","abc@1234"]]
+    return user_list
+
+pytest.mark.parametrize('inputdata',data_method())
+def test_login(inputdata):
     driver=InitiateDriver.startBrowser()
     url=Configreader.readdata("login", "sit_url")
     driver.get(url)
     driver.maximize_window()
 
-    signIn = driver.find_element(By.XPATH, Configreader.readElement("login", "sign_button"))
-    signIn.click()
-
     login=LoginPage.LoginClass(driver)
-    login.enter_email("sabcfrds@gmail.com")
+    login.signinClick()
+    login.enter_email(inputdata[0])
+    login.enter_password(inputdata[1])
+    login.click_submit()
+
 
 
 

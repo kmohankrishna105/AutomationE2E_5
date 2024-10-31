@@ -9,7 +9,9 @@ from Lib import Configreader
 
 def startBrowser():
     global driver
-    if Configreader.readdata('details','browser')=='Chrome':
+    #Configreader.readdata
+    browser=Configreader.readdata('details','browser')
+    if browser=='Chrome':
         path="C:\\Users\\user\\Downloads\\chromedriver.exe"
         serv_obj = Service(path)
         driver = webdriver.Chrome(service=serv_obj)
