@@ -13,6 +13,7 @@ def startBrowser():
     browser=Configreader.readdata('details','browser')
     if browser=='Chrome':
         path="C:\\Users\\user\\Downloads\\chromedriver.exe"
+
         serv_obj = Service(path)
         driver = webdriver.Chrome(service=serv_obj)
         driver.get("https://magento.softwaretestingboard.com/")

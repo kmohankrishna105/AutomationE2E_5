@@ -97,6 +97,4 @@ def test_login():
         existing_address = driver.find_element(By.XPATH, "//div[@class ='shipping-address-item selected-item']").text
         print(existing_address)
     driver.execute_script('scrollBy(0,200)')
-
-
-
+    driver.get_screenshot_as_file("../Screenshots"+name+".png")
